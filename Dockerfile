@@ -1,6 +1,6 @@
 FROM debian:10-slim
 
-ENV FAH_MAJOR_VERSION=7.5
+ENV FAH_MAJOR_VERSION=7.6
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -15,6 +15,6 @@ RUN apt update && apt install -y bzip2 curl && \
 
 EXPOSE 7396 36330
 
-ENTRYPOINT ["FAHClient", "--command-allow=0/0", "--data-directory=/data", "--web-allow=0/0", "--allow=0/0"]
+ENTRYPOINT ["FAHClient", "--command-allow-no-pass=0/0", "--chdir=/data", "--web-allow=0/0", "--allow=0/0"]
 
-CMD ["--user=Anonymous", "--team=0", "--gpu=false", "--power=full"]
+CMD ["--fold-anon=true", "--user=Anonymous", "--team=0", "--gpu=false", "--power=full"]
